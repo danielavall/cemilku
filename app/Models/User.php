@@ -3,13 +3,33 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, SoftDeletes;
+
+    // relasi one to many dari user terhadap address
+    public function addresses()
+    {
+        return $this->hasMany(Address::class);
+    }
+
+    public function mainAddress()
+    {
+        return $this->belongsTo(Address::class, 'address_id');
+    }
+
+    //relasi one to many dari user terhadap order
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
 
     /**
      * The attributes that are mass assignable.
@@ -20,6 +40,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'phone_number',
+        'date_of_birth',
+        'profile_picture',
     ];
 
     /**
@@ -41,7 +64,7 @@ class User extends Authenticatable
     {
         return [
             'email_verified_at' => 'datetime',
-            'password' => 'hashed',
+            'password'          => 'hashed',
         ];
     }
 }

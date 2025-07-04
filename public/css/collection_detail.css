@@ -1,0 +1,274 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;900&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin-top: 10.5vh;
+}
+
+.back-button {
+    padding-top: 15px;
+    padding-left: 5vh;
+}
+
+.collections_img {
+    padding-top: 25px;
+    padding-right: 50px;
+}
+
+.vertical-line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    border-left: 1px solid #727272;
+    transform: translateX(-50%);
+    z-index: 1;
+    padding-left: 20px;
+}
+
+.content-section {
+    padding-left: 50px;
+}
+
+.subtitle {
+    padding-top: 20px;
+    padding-bottom: 0.5vh;
+    color: #747474;
+    font-size: 1.3rem;
+}
+
+.title {
+    padding-bottom: 1vh;
+    font-weight: 700;
+    font-size: 40px;
+}
+
+.price-tag {
+    display: flex;
+    justify-content: center;
+    background-color: #fdc607;
+    border-radius: 30px;
+    width: 175px;
+    height: 40px;
+    line-height: 35px;
+    font-size: 25px;
+    font-weight: 700;
+    margin-bottom: 1vh;
+    border: 1.5px solid #522;
+}
+
+.description {
+    padding-top: 1.5vh;
+    font-size: 1rem;
+}
+
+.size-label {
+    font-weight: 600;
+    padding-top: 1.8vh;
+    font-size: 1.1rem;
+}
+
+.size-value {
+    font-size: 1rem;
+    padding-bottom: 4vh;
+}
+
+.counter-container {
+    display: flex;
+    align-items: center;
+    color: #52282A;
+    gap: 20px;
+    padding-top: 9vh;
+}
+
+.quantity-label {
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+.counter-box {
+    display: flex;
+    align-items: center;
+    border: 2px solid #52282A;
+    border-radius: 10px;
+    background-color: #ececec;
+    height: 35px;
+    width: 120px;
+    padding-left: 8px;
+    text-align: center;
+}
+
+.counter-box button {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: #52282a;
+    padding: 0 5px;
+}
+
+.counter-value {
+    font-size: 1.2rem;
+    width: 50px;
+    text-align: center;
+    color: #52282a;
+    border: none;
+    background: transparent;
+    outline: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.button-container {
+    align-items: center;
+    gap: 40px;
+    padding-top: 6px;
+}
+
+.btn {
+    width: 250px;
+    height: 50px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+#alertBox {
+    min-height: 50px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+    color: #ff0019;
+}
+
+#alertBox.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* RESPONSIVE SETTINGS */
+@media (max-width: 430px) {
+    .col {
+        padding-left: 25px;
+        padding-right: 25px;
+        padding-bottom: 20px;
+    }
+
+    .back-button {
+        padding-left: 2vh;
+        padding-top: 0;
+    }
+
+    .container-fluid {
+        width: 95% !important;
+    }
+
+    .collections_img {
+        width: 100%;
+        padding-right: 40 !important;
+        padding-top: 10px !important;
+    }
+
+    .collections_img img {
+        max-height: 300px !important;
+        width: auto !important;
+    }
+
+    .vertical-line {
+        display: none !important;
+    }
+
+    .content-section {
+        padding-left: 0;
+        margin-top: 20px;
+    }
+
+    .subtitle {
+        font-size: 0.9rem;
+        padding-top: 0;
+    }
+
+    .title {
+        font-size: 1.5rem;
+    }
+
+    .price-tag {
+        width: 120px;
+        height: 30px;
+        font-size: 1.1rem;
+        line-height: 27px;
+    }
+
+    .description {
+        font-size: 0.8rem;
+        padding-top: 10px;
+    }
+
+    .size-label {
+        font-size: 1rem;
+        padding-top: 10px;
+    }
+
+    .size-value {
+        font-size: 0.8rem;
+        padding-bottom: 10px;
+    }
+
+    .counter-container {
+        flex-direction: row;
+        padding-top: 10px;
+    }
+
+    .counter-box {
+        width: 110px;
+        height: 35px;
+    }
+
+    .counter-box button {
+        font-size: 1.8rem;
+    }
+
+    .counter-value {
+        font-size: 1rem;
+        width: 45px;
+    }
+
+    .button-container {
+        flex-direction: row;
+        padding-top: 30px;
+        gap: 20px;
+        padding-bottom: 10px;
+    }
+
+    .btn {
+        width: 250px;
+        height: 45px;
+        font-size: 0.9rem;
+    }
+
+    #alertBox {
+        display: none !important;
+    }
+}
+
+.toast-alert {
+    position: fixed;
+    bottom: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #dc3545;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: bottom 0.5s ease;
+    z-index: 9999;
+    font-size: 0.8rem;
+    width: 322px;
+    text-align: center;
+}
+
+.toast-alert.show {
+    bottom: 90px;
+}

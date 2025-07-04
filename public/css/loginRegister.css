@@ -1,0 +1,45 @@
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    background: url('../assets/layout/backgroundLogin.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.bg-yellow1{
+    background: #FDC607;
+}
+
+.bg-brown1{
+    background: #52282A;
+}
+
+.bg-yellow2{
+    background: #FFF2CC;
+}
+
+.bg-yellow3{
+    background: #FFFBEF;
+}
+
+.text-yellow1{
+    color: #FDC607;
+    text-decoration: none;
+}
+
+.text-brown1{
+    color: #52282A;
+    text-decoration: none;
+}
+
+.text-yellow2{
+    color: #FFF2CC;
+    text-decoration: none;
+}
+
+.text-yellow3{
+    color: #FFFBEF;
+    text-decoration: none;
+}
