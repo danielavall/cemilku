@@ -1,0 +1,115 @@
+/* content-wrapper ini kyk bodynya, di luar bodynya masih ada content wrapper ini soalnya */
+.content-wrapper {
+    background-color: #fffbef !important;
+}
+
+.brand-text {
+    color: #FDC607;
+}
+
+
+.dashboard-box1{
+    background-color: #C980DA !important;
+}
+
+.dashboard-box3{
+    background-color: #FF7396 !important;
+}
+
+.dashboard-box2{
+    background-color: #00BEAE !important;
+}
+
+.dashboard-box4{
+    background-color: #00AEC7 !important;
+}
+
+.card-header{
+    background-color: #FDC607 !important;
+}
+
+.inner{
+    color: #52282A;
+}
+
+h1{
+    font-size: 1.8em !important;
+    color: #52282A !important;
+}
+
+h3{
+    font-size: 1.3em !important;
+    color: #52282A;
+}
+
+.badge{
+    background-color: #FDC607;
+    color: #52282A;
+}
+
+.small-box .icon > i {
+    font-size: 50px !important;
+    /* line-height: 50px !important; */
+}
+
+
+.main-header.navbar {
+    background-color: #FDC607 !important; /* Biru keunguan */
+}
+
+/* Ubah warna sidebar */
+.main-sidebar {
+    background-color: #52282A !important; /* Warna sidebar gelap */
+}
+
+.nav-sidebar .nav-link{
+    color: #FDC607 !important;
+}
+
+.nav-sidebar .nav-link.active{
+    background-color: #FDC607 !important;
+    color: #52282A !important;
+}
+
+
+/* SNACK PAGE */
+.card-body{
+    background-color: #fffbef !important;
+}
+
+.content-wrapper>.content{
+    padding-bottom: 10px;
+}
+
+.btn-add{
+    background-color: #00AEC7 !important;
+    color: white;
+}
+
+.btn-edit{
+    background-color: #C980DA !important;
+    color: white;
+}
+
+.btn-delete{
+    background-color: #FF7396 !important;
+    color: white;
+}
+
+.btn-export{
+    background-color: #00be4c !important;
+    color: white;
+}
+
+.btn-yellowbrown{
+    background-color: #FDC607 !important;
+
+    color: #52282A !important;
+}
+
+.page-item.active .page-link{
+    background-color: #00AEC7 !important;
+    color: white;
+    border-color: #00AEC7;
+}
+

@@ -1,0 +1,516 @@
+.color_primary {
+    background-color: #fdc307;
+}
+
+body {
+    background-color: #fffbef;
+    text-align: justify;
+    font-family: 'poppins';
+}
+
+
+.nav-link {
+    position: relative;
+    /* font-family: 'poppins';  */
+    font-style: semi-bold;
+}
+
+.nav-link::after {
+    transition: all 0.2s;
+    opacity: 0;
+}
+
+.nav-link:hover {
+    /* border-bottom:3px solid #52282a; */
+    text-decoration: 5px underline #52282a;
+}
+
+.navbar {
+    min-height: 70px;
+    height: 70px;
+    transition: height 0.3s ease;
+
+}
+
+
+.mt-custom {
+    margin-top: 10rem;
+}
+
+.snack-card {
+    cursor: pointer;
+    width: 350px;
+    margin: 40px;
+}
+
+.snack-card.active {
+    transform: scale(1.1);
+    z-index: 2;
+}
+
+.snack-card:not(.active) {
+    transform: scale(0.9);
+    filter: grayscale(0.3);
+    opacity: 0.5;
+    transition: ease-in-out 0.2s
+}
+
+.image-button {
+    position: absolute;
+    width: fit-content;
+    height: fit-content;
+    /* transform: translate(-50%, -50%); */
+    top: 90%;
+    left: 20%;
+    background-color: #fdc307;
+    color: #52282a;
+    /* font-family: 'poppins'; */
+    font-weight: bold;
+    border-radius: 20px;
+    border: 0cm;
+}
+
+.image-button:hover {
+    background-color: #52282a;
+    color: #fdc307;
+}
+
+.title-about-us {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.subtitle-about-us {
+    font-size: 20px;
+    font-weight: 500;
+    color: #52282a;
+    padding-left: 3px;
+}
+
+.probar-custom {
+    width: 100%;
+    height: 20px;
+    border-radius: 10px;
+}
+
+.bg-pink {
+    background-color: #FF7396;
+}
+
+.bg-green {
+    background-color: #00BEAE;
+}
+
+.bg-blue {
+    background-color: #00AEC7;
+}
+
+.bg-purple {
+    background-color: #C980DA;
+}
+
+.nav-tengah {
+    margin-left: 8%;
+}
+
+.carousel-item {
+    /* height: 100%; */
+    overflow: visible;
+    display: flexbox;
+    flex: 0 0 80%;
+}
+
+.scroll-snap-x {
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+
+}
+
+.scroll-snap-x>div {
+    scroll-snap-align: start;
+}
+
+#card-carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.card-body {
+    margin-right: 7rem;
+    scroll-snap-align: center;
+    flex-shrink: 0;
+    padding: 1rem;
+
+}
+
+
+/* Banner */
+.carousel-inner img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Trending */
+.container.col-4 {
+    width: 100%;
+    padding: 0 15px;
+    margin: 0 auto;
+}
+
+.product-card {
+    position: relative;
+    margin-bottom: 80px;
+}
+
+.product-image img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.product-category {
+    font-size: 45px;
+    color: #52282A;
+    letter-spacing: 1px;
+    margin-bottom: -10px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.product-title {
+    font-size: 65px;
+    font-weight: bold;
+    color: #52282A;
+    font-family: 'Poppins', sans-serif;
+}
+
+.product-price {
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    font-size: 65px;
+    margin-top: -10px;
+}
+
+.product-price-1 {
+    color: #00BEAE;
+}
+
+.product-price-2 {
+    color: #C980DA;
+}
+
+.product-price-3 {
+    color: #00AEC7;
+}
+
+.product-price-4 {
+    color: #FF7396;
+}
+
+.product-info-right {
+    margin-left: 150px;
+    margin-top: 100px;
+    position: absolute;
+}
+
+.product-info-left {
+    margin-right: 150px;
+    margin-top: 100px;
+    position: absolute;
+}
+
+
+/* Footer */
+.Footer {
+    background-color: #4B1E1E;
+    padding: 40px 0;
+    color: #FDC607;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 30px;
+    width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+
+.footer-logo img {
+    height: 150px;
+    width: auto;
+    max-width: 100%;
+}
+
+.footer-info {
+    flex: 1;
+    min-width: 200px;
+}
+
+.footer-info a {
+    color: #FDC607;
+    text-decoration: underline;
+}
+
+.footer-social {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.footer-social img {
+    width: 30px;
+    height: auto;
+    transition: transform 0.3s;
+}
+
+.footer-social img:hover {
+    transform: scale(1.1);
+}
+
+.footer-divider {
+    border-color: #FFD700;
+    margin: 30px auto;
+    max-width: 1200px;
+}
+
+.footer-copyright {
+    text-align: center;
+    color: #FFD700;
+    padding: 0 20px;
+}
+
+.logo-cemilku {
+    width: 100%;
+    max-width: 500px;
+}
+
+
+
+
+/* Responsive Adjustments */
+/* @media screen and (max-width: 992px) {
+    .footer-container {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .footer-social {
+        justify-content: center;
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .product-title {
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 4px;
+        color: #3a1c1c;
+    }
+} */
+
+@media (min-width: 360px) and (max-width: 960px) {
+
+    .navbar {
+        height: auto !important;
+    }
+
+    .navbar-collapse {
+        display: block;
+        width: 100%;
+    }
+
+    .navbar-nav {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding-left: 1rem;
+        padding-bottom: 1rem;
+        color: #52282A;
+    }
+
+
+    .offcanvas-start {
+        width: 80% !important;
+        max-width: 300px;
+    }
+
+    .offcanvas-backdrop.show {
+        background-color: rgba(0, 0, 0, 0.8);
+        transition: background-color 0.3s ease;
+    }
+
+    .sidebar {
+        background-color: #fffbef !important;
+    }
+
+    .logo-burger {
+        padding-left: 1rem;
+    }
+
+    .nav-link:hover {
+        /* border-bottom:3px solid #52282a; */
+        text-decoration: none;
+    }
+
+    .nav-link.active {
+        border: 2px solid #52282a;
+        border-radius: 10px;
+        padding: 5px 10px;
+        background-color: #fdc607;
+        color: #52282A !important;
+
+    }
+
+    .logo-cemilku {
+        width: 250px;
+        position: relative;
+        top: 7px;
+    }
+
+
+    #banner {
+        margin: 0 30px 0 30px;
+    }
+
+    .carousel-inner img {
+        max-height: 250px;
+    }
+
+
+    .Footer,
+    .Footer * {
+        font-size: 13px;
+    }
+
+
+    .footer-logo img {
+        height: 60px;
+    }
+
+
+    .footer-container {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        text-align: left;
+        gap: 10px;
+        padding: 10px 20px;
+    }
+
+
+    .footer-info {
+        flex: 1;
+        min-width: auto;
+        margin-bottom: 0;
+        text-align: left;
+    }
+
+
+    .footer-social {
+        width: 100%;
+        justify-content: center;
+        margin-top: 15px;
+        order: 2;
+    }
+
+
+    .footer-divider {
+        margin: 20px auto;
+    }
+
+    .footer-copyright {
+        font-size: 12px;
+        padding: 10px 0;
+    }
+
+
+    .product-category {
+        font-size: 15px;
+        margin-bottom: 3px;
+        color: #52282A;
+        letter-spacing: 0px;
+    }
+
+
+    .product-title {
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 4px;
+        color: #3a1c1c;
+    }
+
+    .product-price {
+        font-size: 18px;
+        font-weight: 600;
+        margin-top: 4px;
+        margin-bottom: 20px;
+    }
+
+
+    .title-about-us {
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .subtitle-about-us {
+        font-size: 15px;
+        font-weight: 500;
+        color: #52282A;
+        margin-left: 0px;
+    }
+
+
+    .product-card-left {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 10px 15px;
+        margin-left: 50px;
+    }
+
+    .product-card-right {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 10px 15px;
+        margin-right: 90px;
+    }
+
+    .product-info-right {
+        flex: 1;
+        padding: 0px;
+        margin: 0 0 0 10px;
+        transform: none !important;
+    }
+
+    .product-info-left {
+        flex: 1;
+        padding: 0px;
+        margin: 0 70px 0 0;
+        transform: none !important;
+    }
+
+    .product-image {
+        flex-shrink: 0;
+    }
+
+    .product-image img {
+        max-height: 180px;
+        width: auto;
+        height: auto;
+        display: block;
+    }
+
+    .ps-5 {
+        padding-left: 0 !important;
+    }
+}
