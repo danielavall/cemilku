@@ -74,7 +74,7 @@ Route::get('/auth-google-callback', [RegisterController::class, 'google_callback
 
 Route::middleware('auth', 'verified')->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
-    Route::get('/profile', [UserController::class, 'index'])->name('profile');
+    Route::get('/{id}/profile/{slug}', [UserController::class, 'show'])->name('profile');
 
     Route::get('/mysterybox', function () {
         $mode = 'Budget';

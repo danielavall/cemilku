@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Address;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -33,9 +34,10 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $id, string $slug)
     {
-        //
+        $address = Address::where('user_id', $id)->get();
+        return view('profile.index', \compact('address'));
     }
 
     /**

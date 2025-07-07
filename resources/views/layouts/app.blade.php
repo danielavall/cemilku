@@ -21,6 +21,7 @@
         rel="stylesheet">
 
     {{-- Style --}}
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
     @yield('style')
 
     <!-- Scripts -->
@@ -33,7 +34,7 @@
 
 <body>
     <div id="app">
-        <nav class="navbar fixed-top navbar-expand-sm navbar-light color_primary" style="height: 70px">
+        <nav class="navbar fixed-top navbar-expand-sm navbar-light" style="height: 70px">
             <div class="container-fluid px-3 flex-wrap align-items-center justify-content-between">
 
                 {{-- Toggler Kiri --}}
@@ -76,6 +77,10 @@
                             <a class="nav-link {{ request()->routeIs() ? 'active' : '' }}"
                                 href="">Order</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->routeIs('profile') ? 'active' : '' }}"
+                                href="{{route('profile', ['id' => Auth::user()->id, 'slug' => Str::slug(Auth::user()->name)])}}">Profile</a>
+                        </li>
                     </ul>
                 </div>
 
@@ -111,6 +116,10 @@
                             <li class="nav-item">
                                 <a class="nav-link {{ request()->routeIs('order') ? 'active' : '' }}"
                                     href="order">Order</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {{ request()->routeIs('profile') ? 'active' : '' }}"
+                                    href="{{route('profile', ['id' => Auth::user()->id, 'slug' => Str::slug(Auth::user()->name)])}}">Profile</a>
                             </li>
 
                             <!-- Language (Mobile) -->
