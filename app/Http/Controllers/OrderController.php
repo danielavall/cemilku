@@ -1,87 +1,59 @@
 <?php
-
 namespace App\Http\Controllers;
 
-use App\Models\OrderDetail;
+use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function index(Request $request)
     {
-        if (Auth::user()->role == "admin") {
-            return view('admin.order.index');
+        $status = $request->input('status');
+        // $userId = Auth::id() ?? 2; // default sementara jika belum login
+        $userId = Auth::user()->id;
+
+        // Siapkan query builder
+        $query = Order::with([
+            'orderDetails.collection',
+            'orderDetails.customize',
+            'user.mainAddress',
+        ])->where('user_id', $userId);
+
+        // Filter status jika ada
+        if ($status && $status !== 'all') {
+            $query->where('status', $status);
         }
+
+        // Eksekusi query
+        $orders = $query->latest()->get();
+
+        return view('orders', compact('orders', 'status'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function pay(Order $order)
     {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        if (Auth::user()->role == "admin") {
-            $data = $request->validate([
-                'collection_id' => 'nullable|exists:collections,id',
-                'customize_id' => 'nullable|exists:customizes,id',
-                'quantity' => 'required|integer|min:1',
-                'price' => 'required|numeric|min:0',
-                'order_id' => 'required|exists:orders,id'
-            ]);
-
-            // Validasi manual: hanya satu yang boleh terisi
-            if (is_null($data['collection_id']) === is_null($data['customize_id'])) {
-                return back()->withErrors([
-                    'collection_id' => 'Harus pilih salah satu: collection atau customize.',
-                    'customize_id' => 'Harus pilih salah satu: collection atau customize.'
-                ]);
-            }
-
-            OrderDetail::create($data);
-            return redirect()->route('orders.index');
+        if ($order->status !== 'pending') {
+            return redirect()->back()->with('error', 'Pesanan ini tidak dapat dibayar.');
         }
+
+        // Update status jadi "paid"
+        $order->status         = 'paid';
+        $order->save();
+
+        return redirect()->route('orders.index')->with('success', 'Pembayaran berhasil diproses.');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public static function getStatusColor($status)
     {
-        //
+        return match ($status) {
+            'pending' => '#FDC607',   // Belum Bayar
+            'paid' => '#52282A',      // Diproses
+            'shipped' => '#00D9F5',   // Dikirim
+            'completed' => '#28a745', // Selesai
+            'cancelled' => '#dc3545', // Dibatalkan
+            default => '#6c757d',     // Default abu-abu
+        };
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
 }

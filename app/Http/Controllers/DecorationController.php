@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\DecorationExport;
+use App\Imports\DecorationImport;
 use App\Models\Decoration;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Maatwebsite\Excel\Facades\Excel;
 
 class DecorationController extends Controller
 {
@@ -110,21 +113,21 @@ class DecorationController extends Controller
         }
     }
 
-    // public function export()
-    // {
-    //     return Excel::download(new DecorationExport, 'decoration.xlsx');
-    // }
+    public function export()
+    {
+        return Excel::download(new DecorationExport, 'decoration.xlsx');
+    }
 
-    // public function import(Request $request)
-    // {
-    //     $request->validate([
-    //         'file' => 'required|file|mimes:xlsx,xls,csv',
-    //     ]);
+    public function import(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|file|mimes:xlsx,xls,csv',
+        ]);
 
-    //     Excel::import(new DecorationImport, $request->file('file'));
+        Excel::import(new DecorationImport, $request->file('file'));
 
-    //     return redirect()->route('admin.decoration.index')->with('success', 'Data decoration berhasil diimpor!');
-    // }
+        return redirect()->route('admincollection.index')->with('success', 'Data decoration berhasil diimpor!');
+    }
 
     public function trash()
     {

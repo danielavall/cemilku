@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\CustomizeTowerBouquetController;
 use App\Http\Controllers\DecorationController;
@@ -81,14 +82,14 @@ Route::middleware('auth', 'verified')->group(function () {
         return view('mystery_box.create', compact('mode'));
     })->name('mystery-box');
 
-    Route::match(['get', 'post'], '/mysterybox', function (Request  $request) {
+    Route::match(['get', 'post'], '/mysterybox', function (Request $request) {
         if ($request->isMethod('post')) {
             // Jika ada POST ke /mysterybox, langsung redirect ke GET /mysterybox
             return redirect()->route('mysterybox');
         }
-        $mode = session('mode', 'Budget');
+        $mode   = session('mode', 'Budget');
         $budget = session('budget');
-        $mood = session('mood');
+        $mood   = session('mood');
         return view('mystery_box.create', compact('mode', 'budget', 'mood'));
     })->name('mysterybox');
 
@@ -117,4 +118,15 @@ Route::middleware('auth', 'verified')->group(function () {
     Route::post('/customize-tower-bouquet/{type}/store', [CustomizeTowerBouquetController::class, 'store'])->name('customer-tower-bouquet.store');
 
     Route::resource('collections', CollectionController::class);
+
+    // baru dibuat ni bang -jason
+    Route::get('/checkout', function () {
+        return view('checkout');
+    })->name('checkout.index');
+
+    Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
+
+    Route::post('/orders/{order}/pay', [OrderController::class, 'pay'])->name('orders.pay');
+
+    Route::post('/checkout', [CheckoutController::class, 'store'])->name('checkout');
 });

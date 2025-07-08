@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\SnackExport;
+use App\Imports\SnackImport;
 use App\Models\Snack;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Maatwebsite\Excel\Facades\Excel;
 
 class SnackController extends Controller
 {
@@ -111,21 +114,21 @@ class SnackController extends Controller
         return redirect()->route('admin.snack.index')->with('success', 'Snack dihapus!');
     }
 
-    // public function export()
-    // {
-    //     return Excel::download(new SnackExport, 'snack.xlsx');
-    // }
+    public function export()
+    {
+        return Excel::download(new SnackExport, 'snack.xlsx');
+    }
 
-    // public function import(Request $request)
-    // {
-    //     $request->validate([
-    //         'file' => 'required|file|mimes:xlsx,xls,csv',
-    //     ]);
+    public function import(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|file|mimes:xlsx,xls,csv',
+        ]);
 
-    //     Excel::import(new SnackImport, $request->file('file'));
+        Excel::import(new SnackImport, $request->file('file'));
 
-    //     return redirect()->route('admin.snack.index')->with('success', 'Data snack berhasil diimpor!');
-    // }
+        return redirect()->route('adminsnack.index')->with('success', 'Data snack berhasil diimpor!');
+    }
 
     // Menampilkan semua snack yang sudah dihapus
     public function trash()

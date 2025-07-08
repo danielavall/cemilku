@@ -1,0 +1,39 @@
+.tab-btn {
+    border: 2px solid #FDC607;
+    color: #FDC607;
+    background-color: transparent;
+    font-weight: 500;
+}
+
+.tab-btn:hover {
+    background-color: #fde87a;
+    color: #52282A;
+}
+
+.tab-btn.active {
+    background-color: #52282A;
+    color: #FDC607;
+    font-weight: bold;
+}
+
+.custombg {
+    background-color: #FFF2CC;
+}
+
+.custombg2 {
+    background-color: #FFFBEF;
+}
+
+.btn-outline-brown {
+    color: #52282A;
+    border: 2px solid #FDC607;
+}
+
+.btn-outline-brown:hover {
+    background-color: #FDC607;
+    color: #52282A;
+}
+
+.customtext {
+    color: #FDC607;
+}
