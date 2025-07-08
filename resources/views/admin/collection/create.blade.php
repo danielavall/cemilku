@@ -12,7 +12,7 @@
     </div>
 
     <x-adminlte-card>
-        <form action="{{ route('admin.collection.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('admincollection.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
 
             {{-- Nama Collection --}}
@@ -61,7 +61,7 @@
             <x-adminlte-input name="image" label="Collection Image" type="file" accept="image/*" />
 
             <x-adminlte-button type="submit" theme="primary" icon="fas fa-plus" label="Add" />
-            <a href="{{ route('admin.collection.index') }}" class="btn btn-secondary ml-2">Cancel</a>
+            <a href="{{ route('collections.index') }}" class="btn btn-secondary ml-2">Cancel</a>
         </form>
     </x-adminlte-card>
 

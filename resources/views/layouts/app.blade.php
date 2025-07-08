@@ -21,7 +21,7 @@
         rel="stylesheet">
 
     {{-- Style --}}
-    <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     @yield('style')
 
     <!-- Scripts -->
@@ -74,12 +74,11 @@
                                 href="{{ route('collections.index') }}">Collections</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->routeIs() ? 'active' : '' }}"
-                                href="">Order</a>
+                            <a class="nav-link {{ request()->routeIs() ? 'active' : '' }}" href="">Order</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {{ request()->routeIs('profile') ? 'active' : '' }}"
-                                href="{{route('profile', ['id' => Auth::user()->id, 'slug' => Str::slug(Auth::user()->name)])}}">Profile</a>
+                                href="{{ route('profile', ['id' => Auth::user()->id, 'slug' => Str::slug(Auth::user()->name)]) }}">Profile</a>
                         </li>
                     </ul>
                 </div>
@@ -96,7 +95,8 @@
 
                         <!-- Logo (mobile) dalem burger -->
                         <div class="logo-burger d-block d-sm-none mb-3 ">
-                            <img src="{{ asset('assets/logo/logo.png') }}" alt="Logo" width="60" height="45" />
+                            <img src="{{ asset('assets/logo/logo.png') }}" alt="Logo" width="60"
+                                height="45" />
                         </div>
 
                         <!-- Menu -->
@@ -119,7 +119,7 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link {{ request()->routeIs('profile') ? 'active' : '' }}"
-                                    href="{{route('profile', ['id' => Auth::user()->id, 'slug' => Str::slug(Auth::user()->name)])}}">Profile</a>
+                                    href="{{ route('profile', ['id' => Auth::user()->id, 'slug' => Str::slug(Auth::user()->name)]) }}">Profile</a>
                             </li>
 
                             <!-- Language (Mobile) -->
@@ -139,9 +139,12 @@
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="logout" style="color: red">
-                                    <i class="bi bi-box-arrow-right me-1"></i>Log out
-                                </a>
+                                <form action="{{route('logout')}}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="nav-link" style="color: red">
+                                        <i class="bi bi-box-arrow-right me-1"></i>Log out
+                                    </button>
+                                </form>
                             </li>
                         </ul>
                     </div>
@@ -177,7 +180,8 @@
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="#">
+                            <li>
+                                <a class="dropdown-item" href="#">
                                     <i class="bi bi-box-arrow-right me-2"></i>Log out
                                 </a>
                             </li>

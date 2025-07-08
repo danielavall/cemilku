@@ -14,11 +14,11 @@
     <x-adminlte-card>
 
         <div class="d-flex justify-content-between mb-3">
-            <a href="{{ route('admin.collection.create') }}" class="btn btn-add">
+            <a href="{{ route('admincollection.create') }}" class="btn btn-add">
                 <i class="fas fa-plus"></i> Add Collection
             </a>
 
-            <a href="{{ route('admin.collection.trash') }}" class="btn btn-yellowbrown">
+            <a href="{{ route('admincollection.trash') }}" class="btn btn-yellowbrown">
                 <i class="fas fa-trash-alt"></i> View Trash
             </a>
         </div>
@@ -35,7 +35,7 @@
                     {{-- Gambar --}}
                     <td>
                         @if ($collection->image)
-                            <img src="{{ asset('storage/' . $collection->image) }}" alt="collection image" width="60" height="60" style="object-fit: cover; border-radius: 6px;">
+                            <img src="{{ asset('assets/collections/' . $collection->image) }}" alt="collection image" width="60" height="60" style="object-fit: cover; border-radius: 6px;">
                         @else
                             <span class="text-muted">No Image</span>
                         @endif
@@ -59,8 +59,8 @@
                     <td>
                         <x-adminlte-button class="btn-edit" icon="fas fa-edit" size="sm"
                             title="Edit" label="Edit"
-                            onclick="location.href='{{ route('admin.collection.edit', $collection->id) }}'" />
-                        <form action="{{ route('admin.collection.destroy', $collection->id) }}" method="POST" style="display:inline-block;" onsubmit="return confirm('Yakin hapus collection ini?')">
+                            onclick="location.href='{{ route('admincollection.edit', $collection->id) }}'" />
+                        <form action="{{ route('admincollection.destroy', $collection->id) }}" method="POST" style="display:inline-block;" onsubmit="return confirm('Yakin hapus collection ini?')">
                             @csrf
                             @method('DELETE')
                             <x-adminlte-button class="btn-delete" icon="fas fa-trash" size="sm" title="Hapus" label="Hapus" type="submit"/>
@@ -73,16 +73,16 @@
     </x-adminlte-card>
 
     {{-- Tombol Ekspor --}}
-    <a href="{{ route('admin.collection.export') }}" class="btn btn-export mb-3">
+    {{-- <a href="{{ route('admin.collection.export') }}" class="btn btn-export mb-3">
         Export to Excel
-    </a>
+    </a> --}}
 
     {{-- Form Impor --}}
-    <form action="{{ route('admin.collection.import') }}" method="POST" enctype="multipart/form-data">
+    {{-- <form action="{{ route('admin.collection.import') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <input type="file" name="file" required>
         <button type="submit" class="btn btn-add">Import Excel</button>
-    </form>
+    </form> --}}
 
     {{-- Pesan Sukses --}}
     @if (session('success'))

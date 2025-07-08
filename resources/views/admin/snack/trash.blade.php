@@ -12,7 +12,7 @@
     </div>
 
 
-    <a href="{{ route('admin.snack.index') }}" class="btn btn-yellowbrown mb-3">
+    <a href="{{ route('adminsnack.index') }}" class="btn btn-yellowbrown mb-3">
         <i class="fas fa-arrow-left "></i> Back to List
     </a>
 
@@ -32,12 +32,12 @@
                     <td>{{ $snack->name }}</td>
                     <td>{{ $snack->deleted_at }}</td>
                     <td>
-                        <form action="{{ route('admin.snack.restore', $snack->id) }}" method="POST" style="display:inline-block;">
+                        <form action="{{ route('adminsnack.restore', $snack->id) }}" method="POST" style="display:inline-block;">
                             @csrf
                             @method('PUT')
                             <button class="btn btn-add btn-sm" onclick="return confirm('Restore snack ini?')">Restore</button>
                         </form>
-                        <form action="{{ route('admin.snack.force-delete', $snack->id) }}" method="POST" style="display:inline-block;">
+                        <form action="{{ route('adminsnack.force-delete', $snack->id) }}" method="POST" style="display:inline-block;">
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-delete btn-sm" onclick="return confirm('Hapus permanen snack ini?')">Delete Permanently</button>
@@ -52,7 +52,7 @@
         </tbody>
     </table>
 
-    <form action="{{ route('admin.snack.restore-all') }}" method="POST" style="display: inline-block;" onsubmit="return confirm('Yakin ingin mengembalikan semua snack yang terhapus?')">
+    <form action="{{ route('adminsnack.restore-all') }}" method="POST" style="display: inline-block;" onsubmit="return confirm('Yakin ingin mengembalikan semua snack yang terhapus?')">
     @csrf
     @method('PUT')
     <button type="submit" class="btn btn-export mb-3">
