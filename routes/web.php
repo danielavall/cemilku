@@ -77,6 +77,39 @@ Route::middleware('auth', 'verified')->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
     Route::get('/{id}/profile/{slug}', [UserController::class, 'show'])->name('profile');
 
+
+
+
+    Route::get('/cart', function () {
+        return view('cart');
+    })->name('cart');
+    // START MODIFIKASI: Rute API Alamat
+    // Grup ini TIDAK perlu middleware 'auth' karena sudah di dalam grup middleware 'auth' di atasnya.
+    // Namun, validasi Auth::id() di controller tetap PENTING!
+    Route::group([], function () {
+        // PENTING: Hapus atau komentari baris ini! Ini adalah rute lama yang tidak memfilter berdasarkan user ID.
+        // Route::get('/api/addresses', [AddressController::class, 'getAddressesApi'])->name('api.addresses.index');
+
+        // BARU DITAMBAHKAN/DIKONFIRMASI: Ini adalah rute yang benar untuk mengambil alamat berdasarkan user ID
+        Route::get('/api/users/{user}/addresses', [AddressController::class, 'getAddressesApi'])->name('api.users.addresses.index');
+
+        // POST: Menyimpan alamat baru untuk user tertentu (user_id akan diambil dari {user})
+        Route::post('/api/users/{user}/addresses', [AddressController::class, 'store'])->name('api.users.addresses.store');
+
+        // PUT: Memperbarui alamat yang sudah ada untuk user tertentu
+        Route::put('/api/users/{user}/addresses/{address}', [AddressController::class, 'update'])->name('api.users.addresses.update');
+
+        // DELETE: Menghapus alamat untuk user tertentu
+        Route::delete('/api/users/{user}/addresses/{address}', [AddressController::class, 'destroy'])->name('api.users.addresses.destroy');
+
+        // PUT: Mengatur alamat sebagai alamat utama (primary) untuk user tertentu
+        Route::put('/api/users/{user}/addresses/{address}/set-primary', [AddressController::class, 'setPrimary'])->name('api.users.addresses.setPrimary');
+    });
+    // END MODIFIKASI
+
+
+
+
     Route::get('/mysterybox', function () {
         $mode = 'Budget';
         return view('mystery_box.create', compact('mode'));

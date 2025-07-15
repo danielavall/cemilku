@@ -636,6 +636,9 @@ class ComposerStaticInit73ace0a62df49f8f67e0f6ac33c5209c
     );
 
     public static $classMap = array (
+        'App\\Exports\\CollectionExport' => __DIR__ . '/../..' . '/app/Exports/CollectionExport.php',
+        'App\\Exports\\DecorationExport' => __DIR__ . '/../..' . '/app/Exports/DecorationExport.php',
+        'App\\Exports\\SnackExport' => __DIR__ . '/../..' . '/app/Exports/SnackExport.php',
         'App\\Http\\Controllers\\AddressController' => __DIR__ . '/../..' . '/app/Http/Controllers/AddressController.php',
         'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
@@ -655,6 +658,9 @@ class ComposerStaticInit73ace0a62df49f8f67e0f6ac33c5209c
         'App\\Http\\Controllers\\OrderController' => __DIR__ . '/../..' . '/app/Http/Controllers/OrderController.php',
         'App\\Http\\Controllers\\SnackController' => __DIR__ . '/../..' . '/app/Http/Controllers/SnackController.php',
         'App\\Http\\Controllers\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserController.php',
+        'App\\Imports\\CollectionImport' => __DIR__ . '/../..' . '/app/Imports/CollectionImport.php',
+        'App\\Imports\\DecorationImport' => __DIR__ . '/../..' . '/app/Imports/DecorationImport.php',
+        'App\\Imports\\SnackImport' => __DIR__ . '/../..' . '/app/Imports/SnackImport.php',
         'App\\Models\\Address' => __DIR__ . '/../..' . '/app/Models/Address.php',
         'App\\Models\\Cart' => __DIR__ . '/../..' . '/app/Models/Cart.php',
         'App\\Models\\CartItem' => __DIR__ . '/../..' . '/app/Models/CartItem.php',

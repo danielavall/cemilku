@@ -1,14 +1,15 @@
 <?php
+
 namespace App\Models;
 
-use App\Models\User;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Address extends Model
 {
-    use SoftDeletes;
+    use HasFactory;
 
+    // Tentukan kolom yang dapat diisi
     protected $fillable = [
         'user_id',
         'label',
@@ -22,15 +23,12 @@ class Address extends Model
         'address',
         'is_primary',
         'receiver_name',
-        'phone_num',
+        'phone_number'
     ];
 
+    // Relasi dengan model User
     public function user()
     {
         return $this->belongsTo(User::class);
-    }
-    public function mainAddress()
-    {
-        return $this->belongsTo(Address::class, 'address_id');
     }
 }

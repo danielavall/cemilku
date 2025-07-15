@@ -124,10 +124,12 @@
 
                             <!-- Language (Mobile) -->
                             <li class="nav-item dropdown d-block d-sm-none">
+
                                 <a class="nav-link dropdown-toggle" href="#" role="button"
                                     data-bs-toggle="dropdown">
                                     Language
                                 </a>
+
                                 <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" href="#"
                                             onclick="setLanguage('id')">Indonesia</a></li>
@@ -150,7 +152,7 @@
                     </div>
                 </div>
 
-                {{-- Language (Desktop) --}}
+                {{-- Language (Desktop)
                 <div class="dropdown d-none d-sm-block pe-2">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                         <img id="flag-icon" src="https://flagcdn.com/w20/id.png" alt="ID"
@@ -160,40 +162,44 @@
                         <li><a class="dropdown-item" href="#" onclick="setLanguage('id')">Indonesia</a></li>
                         <li><a class="dropdown-item" href="#" onclick="setLanguage('eng')">English</a></li>
                     </ul>
-                </div>
+                </div> --}}
 
                 {{-- Cart + Profile (Always on right) --}}
                 <div class="d-flex align-items-center gap-2 ms-auto pe-2">
-                    <a class="nav-link" href="#">
-                        <i class="bi bi-cart3 fs-2" style="color: #52282A;"></i>
+                    <!-- BARU DITAMBAHKAN / DIPINDAHKAN: Ikon Keranjang untuk Desktop -->
+                    <a class="nav-link d-none d-sm-block" href="{{ route('cart') }}">
+                        <i class="bi bi-cart3 fs-1" style="color: #341c02;"></i>
                     </a>
-                    {{-- PROFILE BUAT DESKTOP --}}
-                    <div class="dropdown d-none d-sm-block ms-3">
-                        <a href="#" class="nav-link" data-bs-toggle="dropdown">
-                            <i class="bi bi-person-circle fs-2" style="color: #341c02;"></i>
+
+                    <!-- DIPINDAHKAN: Dropdown Bahasa untuk Desktop -->
+                    <div class="dropdown d-none d-sm-block">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                            <img id="flag-icon" src="https://flagcdn.com/w20/id.png" alt="ID"
+                                class="rounded-circle" width="30" height="30" />
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="#">
-                                    <i class="bi bi-gear me-2"></i>Settings
-                                </a>
-                            </li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="#">
-                                    <i class="bi bi-box-arrow-right me-2"></i>Log out
-                                </a>
-                            </li>
+                            <li><a class="dropdown-item" href="#" onclick="setLanguage('id')">Indonesia</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="setLanguage('eng')">English</a></li>
+                        </ul>
                     </div>
 
-                    {{-- PROFILE BUAT MOBILE --}}
+                    {{-- PROFILE BUAT DESKTOP (posisinya tetap di dalam grup, setelah bahasa) --}}
+                    <div class="dropdown d-none d-sm-block ms-3">
+                        <!-- ... kode profil desktop ... -->
+                    </div>
+
+                    <!-- DIPERBAIKI HREF & VISIBILITAS: Ikon Keranjang untuk Mobile -->
+                    <a class="nav-link d-block d-sm-none" href="{{ route('cart') }}">
+                        <i class="bi bi-cart3 fs-2" style="color: #52282A;"></i>
+                    </a>
+
+                    {{-- PROFILE BUAT MOBILE (posisinya tetap di dalam grup) --}}
                     <div class="d-block d-sm-none ms-3">
-                        <a class="nav-link" href="#">
-                            <i class="bi bi-person-circle fs-2" style="color: #341c02;"></i>
-                        </a>
+                        <!-- ... kode profil mobile ... -->
                     </div>
                 </div>
+
+
             </div>
         </nav>
 
@@ -201,6 +207,18 @@
             @yield('content')
         </main>
     </div>
+     <!-- Global JavaScript -->
+    <script src="{{ asset('javascript/languange_swithcer.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
+        xintegrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous">
+    </script>
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+
+    {{-- PENTING: cart.js tetap dimuat secara global karena window.addToCart perlu diakses dari halaman lain --}}
+    <script src="{{ asset('js/cart.js') }}"></script>
+    {{-- DIHAPUS DARI SINI: <script src="{{ asset('js/collection_detail.js') }}"></script> --}}
+
+    @yield('script') {{-- Ini adalah tempat JavaScript spesifik halaman akan diinjeksikan --}}
 </body>
 
 </html>

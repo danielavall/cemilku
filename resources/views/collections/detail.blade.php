@@ -4,8 +4,16 @@
     <link rel="stylesheet" href="{{ asset('css/collection_detail.css') }}">
 @endsection
 
-@section('script')
+{{-- @section('script')
     <script src="{{ asset('js/collection_detail.js') }}"></script>
+    <script src="{{ asset('js/cart.js') }}"></script>
+@endsection --}}
+
+@section('script')
+    {{-- DITAMBAHKAN DI SINI: collection_detail.js hanya dimuat di halaman ini --}}
+    <script src="{{ asset('js/collection_detail.js') }}"></script>
+    {{-- cart.js tidak perlu dimuat lagi di sini karena sudah dimuat secara global di layouts/app.blade.php --}}
+    {{-- <script src="{{ asset('js/cart.js') }}"></script> --}}
 @endsection
 
 @section('content')
@@ -38,12 +46,57 @@
                 <div class="size-value">85,6 cm (H) x 25 cm (W)</div>
 
                 {{-- FORM ADD TO CART --}}
-                <form action="{{ route('collections.store', $detail->id) }}" method="POST">
+                {{-- <form action="{{ route('collections.store', $detail->id) }}" method="POST">
                     @csrf
                     <input type="hidden" name="collection_id" value="{{ $detail->id }}">
                     <input type="hidden" name="price" value="{{ $detail->price }}">
                     <input type="hidden" id="stock" value="{{ $detail->stock }}">
 
+                    BUTTON QUANTITY
+                    <div class="counter-container">
+                        <h6 style="font-weight:600; margin-bottom:0px;">QUANTITY</h6>
+                        <div class="counter-box">
+                            <button type="button" id="minus">-</button>
+                            <input type="number" id="value" class="counter-value" name="quantity" value="1"
+                                min="1" />
+                            <button type="button" id="plus">+</button>
+                        </div>
+                    </div>
+
+                    ALERT QUANTITY MELEBIHI STOK
+                    <div id="alertBox" class="alert-text mt-2" role="alert">
+                        <span id="alertMessage">Oops! Maximum stock limit reached.</span>
+                    </div>
+
+
+                    BUTTON ADD TO CART AND BUY NOW
+                    <div class="button-container d-flex">
+                        <button type="submit" class="btn btn-warning d-flex align-items-center justify-content-center"
+                            style="color: #52282A">
+                            <i class="bi bi-cart"></i>
+                            Add To Cart
+                        </button>
+                        <a href="#" class="btn btn-warning d-flex align-items-center justify-content-center"
+                            style="color: #52282A">
+                            Buy Now
+                        </a>
+                    </div>
+                </form> --}}
+
+                <form id="add-to-cart-form"> {{-- Pastikan form memiliki ID --}}
+                    @csrf
+                    <input type="hidden" id="item-id" value="{{ $detail->id }}">
+                    <input type="hidden" id="item-name" value="{{ $detail->name }}">
+                    <input type="hidden" id="item-price" value="{{ $detail->price }}">
+                    <input type="hidden" id="item-image" value="{{ asset('assets/collections/' . $detail->image) }}">
+                    <script>
+                        console.log("DEBUG: Generated image URL:", document.getElementById('item-image').value);
+                    </script>
+                    <input type="hidden" id="item-description" value="Snack {{ $detail->type }}"> {{-- Tambahkan ini jika belum ada --}}
+                    <input type="hidden" id="stock" value="{{ $detail->stock }}">
+                    <script>
+                        console.log("DEBUG: Stock value from Blade:", document.getElementById('stock').value);
+                    </script>
                     {{-- BUTTON QUANTITY --}}
                     <div class="counter-container">
                         <h6 style="font-weight:600; margin-bottom:0px;">QUANTITY</h6>
@@ -63,8 +116,9 @@
 
                     {{-- BUTTON ADD TO CART AND BUY NOW --}}
                     <div class="button-container d-flex">
-                        <button type="submit" class="btn btn-warning d-flex align-items-center justify-content-center"
-                            style="color: #52282A">
+                        {{-- PERUBAHAN: Ubah type menjadi button dan tambahkan ID --}}
+                        <button type="button" class="btn btn-warning d-flex align-items-center justify-content-center"
+                            style="color: #52282A" id="add-to-cart-detail-btn">
                             <i class="bi bi-cart"></i>
                             Add To Cart
                         </button>
@@ -74,6 +128,8 @@
                         </a>
                     </div>
                 </form>
+
+
 
                 {{-- TOAST ALERT --}}
                 <div id="toastAlert" class="toast-alert">

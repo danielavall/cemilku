@@ -6,6 +6,9 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Exports\\CollectionExport' => $baseDir . '/app/Exports/CollectionExport.php',
+    'App\\Exports\\DecorationExport' => $baseDir . '/app/Exports/DecorationExport.php',
+    'App\\Exports\\SnackExport' => $baseDir . '/app/Exports/SnackExport.php',
     'App\\Http\\Controllers\\AddressController' => $baseDir . '/app/Http/Controllers/AddressController.php',
     'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
     'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
@@ -25,6 +28,9 @@ return array(
     'App\\Http\\Controllers\\OrderController' => $baseDir . '/app/Http/Controllers/OrderController.php',
     'App\\Http\\Controllers\\SnackController' => $baseDir . '/app/Http/Controllers/SnackController.php',
     'App\\Http\\Controllers\\UserController' => $baseDir . '/app/Http/Controllers/UserController.php',
+    'App\\Imports\\CollectionImport' => $baseDir . '/app/Imports/CollectionImport.php',
+    'App\\Imports\\DecorationImport' => $baseDir . '/app/Imports/DecorationImport.php',
+    'App\\Imports\\SnackImport' => $baseDir . '/app/Imports/SnackImport.php',
     'App\\Models\\Address' => $baseDir . '/app/Models/Address.php',
     'App\\Models\\Cart' => $baseDir . '/app/Models/Cart.php',
     'App\\Models\\CartItem' => $baseDir . '/app/Models/CartItem.php',
