@@ -103,7 +103,7 @@
 
             {{-- card 1 --}}
 
-            <a href="/">
+            <a href="{{route('mystery-box')}}">
                 <div class="card-body flex-shrink-0 me-1"
                     style="width: 67.5vw; max-width: 350px; scroll-snap-align:center">
                     <img src="{{asset('assets/banner/bannerSM.png')}}" class="img-fluid rounded" alt="snackMystery">
@@ -112,7 +112,7 @@
 
 
             {{-- card 2 --}}
-            <a href="/">
+            <a href="{{route('customize-tower-bouquet.bouquet')}}">
                 <div class="card-body flex-shrink-0 me-1" id="second-card"
                     style="width: 70vw; max-width: 350px; scroll-snap-align:center">
                     <img src="{{asset('assets/banner/bannerSB.png')}}" class="img-fluid rounded" alt="snackBouquet">
@@ -120,7 +120,7 @@
             </a>
 
             {{-- card 3 --}}
-            <a href="/">
+            <a href="{{route('customize-tower-bouquet.tower')}}">
                 <div class="card-body flex-shrink-0 me-1" style="width: 67vw; max-width: 350px; scroll-snap-align:center">
                     <img src="{{asset('assets/banner/bannerST.png')}}" class="img-fluid rounded" alt="snackTower">
                 </div>
@@ -154,7 +154,7 @@
             </div>
         </div>
 
-        <div class="product-card-left d-flex justify-content-center align-items-center">
+         <div class="product-card-left d-flex justify-content-center align-items-center">
             <div class="product-image">
                 <img src="{{asset('assets/banner/Group19.png')}}">
             </div>
@@ -175,39 +175,6 @@
                 <img src="{{asset('assets/banner/Group20bener.png')}}">
             </div>
         </div>
-
-        {{-- <div class="product-card-right d-flex justify-content-center align-items-center">
-            <div class="product-info-left top-10 end-45 translate-middle ps-5">
-                <p class="product-category">snack bouquet</p>
-                <h3 class="product-title">Fest Celebration</h3>
-                <p class="product-price product-price-2">$ 100</p>
-            </div>
-            <div class="product-image">
-                <img src="assets/Group18bener.png">
-            </div>
-        </div>
-
-        <div class="product-card-left d-flex justify-content-center align-items-center">
-            <div class="product-image">
-                <img src="assets/Group19.png">
-            </div>
-            <div class="product-info-right top-10 start-50 translate-middle ps-5">
-                <p class="product-category">snack surprise</p>
-                <h3 class="product-title">Happy Combo</h3>
-                <p class="product-price product-price-3">$ 75</p>
-            </div>
-        </div>
-
-        <div class="product-card-right d-flex justify-content-center align-items-center">
-            <div class="product-info-left top-10 end-45 translate-middle ps-5">
-                <p class="product-category">snack tower</p>
-                <h3 class="product-title">Ultimate Combo</h3>
-                <p class="product-price product-price-4">$ 175</p>
-            </div>
-            <div class="product-image">
-                <img src="assets/Group20bener.png">
-            </div>
-        </div> --}}
     </div>
 
 

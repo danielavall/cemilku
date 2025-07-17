@@ -49,7 +49,7 @@ class SnackController extends Controller
 
             Snack::create($validated);
 
-            return redirect()->route('admin.snack.index')->with('success', 'Snack ditambahkan!');
+            return redirect()->route('adminsnack.index')->with('success', 'Snack ditambahkan!');
         }
     }
 
@@ -58,7 +58,7 @@ class SnackController extends Controller
      */
     public function show(string $id) {
         if(Auth::user()->role == "admin"){
-            return redirect()->route('admin.snack.index');
+            return redirect()->route('adminsnack.index');
         }
     }
 
@@ -97,7 +97,7 @@ class SnackController extends Controller
 
             $snack->update($validated);
 
-            return redirect()->route('admin.snack.index')->with('success', 'Snack diperbarui!');
+            return redirect()->route('adminsnack.index')->with('success', 'Snack diperbarui!');
         }
     }
 
@@ -108,7 +108,7 @@ class SnackController extends Controller
     {
         $snack->delete();
 
-        return redirect()->route('admin.snack.index')->with('success', 'Snack dihapus!');
+        return redirect()->route('adminsnack.index')->with('success', 'Snack dihapus!');
     }
 
     // public function export()
@@ -139,7 +139,7 @@ class SnackController extends Controller
     {
         $snack = Snack::withTrashed()->findOrFail($id);
         $snack->restore();
-        return redirect()->route('admin.snack.trash')->with('success', 'Snack berhasil dipulihkan.');
+        return redirect()->route('adminsnack.trash')->with('success', 'Snack berhasil dipulihkan.');
     }
 
     // Hapus permanen snack
@@ -147,12 +147,12 @@ class SnackController extends Controller
     {
         $snack = Snack::withTrashed()->findOrFail($id);
         $snack->forceDelete();
-        return redirect()->route('admin.snack.trash')->with('success', 'Snack berhasil dihapus permanen.');
+        return redirect()->route('adminsnack.trash')->with('success', 'Snack berhasil dihapus permanen.');
     }
 
     public function restoreAll()
     {
         Snack::onlyTrashed()->restore();
-        return redirect()->route('admin.snack.trash')->with('success', 'Semua snack berhasil direstore.');
+        return redirect()->route('adminsnack.trash')->with('success', 'Semua snack berhasil direstore.');
     }
 }
