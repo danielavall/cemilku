@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\CollectionExport;
+use App\Imports\CollectionImport;
 use App\Models\Cart;
 use App\Models\CartItem;
 use App\Models\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
 
 class CollectionController extends Controller
 {
@@ -158,20 +161,20 @@ class CollectionController extends Controller
         }
     }
 
-    // public function export()
-    // {
-    //     return Excel::download(new CollectionExport, 'collection.xlsx');
-    // }
+    public function export()
+    {
+        return Excel::download(new CollectionExport, 'collection.xlsx');
+    }
 
-    // public function import(Request $request)
-    // {
-    //     $request->validate([
-    //         'file' => 'required|file|mimes:xlsx,xls,csv',
-    //     ]);
+    public function import(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|file|mimes:xlsx,xls,csv',
+        ]);
 
-    //     Excel::import(new CollectionImport, $request->file('file'));
-    //     return redirect()->route('admin.collection.index')->with('success', 'Data collection berhasil diimpor!');
-    // }
+        Excel::import(new CollectionImport, $request->file('file'));
+        return redirect()->route('admincollection.index')->with('success', 'Data collection berhasil diimpor!');
+    }
 
     public function trash()
     {

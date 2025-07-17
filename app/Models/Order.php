@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
@@ -9,11 +8,19 @@ class Order extends Model
 {
     use SoftDeletes;
 
+    protected $fillable = [
+        'user_id',
+        'total_price',
+        'payment_method',
+        'status',
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);
     }
-    public function orderDetails() {
+    public function orderDetails()
+    {
         return $this->hasMany(OrderDetail::class);
     }
 }

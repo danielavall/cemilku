@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\CollectionController;
 use App\Http\Controllers\CustomizeTowerBouquetController;
 use App\Http\Controllers\DecorationController;
@@ -74,21 +75,54 @@ Route::get('/auth-google-callback', [RegisterController::class, 'google_callback
 
 Route::middleware('auth', 'verified')->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
-    Route::get('/{id}/profile/{slug}', [UserController::class, 'show'])->name('profile');
+    Route::get('s', [UserController::class, 'show'])->name('profile');
+
+
+
+
+    Route::get('/cart', function () {
+        return view('cart');
+    })->name('cart');
+    // START MODIFIKASI: Rute API Alamat
+    // Grup ini TIDAK perlu middleware 'auth' karena sudah di dalam grup middleware 'auth' di atasnya.
+    // Namun, validasi Auth::id() di controller tetap PENTING!
+    Route::group([], function () {
+        // PENTING: Hapus atau komentari baris ini! Ini adalah rute lama yang tidak memfilter berdasarkan user ID.
+        // Route::get('/api/addresses', [AddressController::class, 'getAddressesApi'])->name('api.addresses.index');
+
+        // BARU DITAMBAHKAN/DIKONFIRMASI: Ini adalah rute yang benar untuk mengambil alamat berdasarkan user ID
+        Route::get('/api/users/{user}/addresses', [AddressController::class, 'getAddressesApi'])->name('api.users.addresses.index');
+
+        // POST: Menyimpan alamat baru untuk user tertentu (user_id akan diambil dari {user})
+        Route::post('/api/users/{user}/addresses', [AddressController::class, 'store'])->name('api.users.addresses.store');
+
+        // PUT: Memperbarui alamat yang sudah ada untuk user tertentu
+        Route::put('/api/users/{user}/addresses/{address}', [AddressController::class, 'update'])->name('api.users.addresses.update');
+
+        // DELETE: Menghapus alamat untuk user tertentu
+        Route::delete('/api/users/{user}/addresses/{address}', [AddressController::class, 'destroy'])->name('api.users.addresses.destroy');
+
+        // PUT: Mengatur alamat sebagai alamat utama (primary) untuk user tertentu
+        Route::put('/api/users/{user}/addresses/{address}/set-primary', [AddressController::class, 'setPrimary'])->name('api.users.addresses.setPrimary');
+    });
+    // END MODIFIKASI
+
+
+
 
     Route::get('/mysterybox', function () {
         $mode = 'Budget';
         return view('mystery_box.create', compact('mode'));
     })->name('mystery-box');
 
-    Route::match(['get', 'post'], '/mysterybox', function (Request  $request) {
+    Route::match(['get', 'post'], '/mysterybox', function (Request $request) {
         if ($request->isMethod('post')) {
             // Jika ada POST ke /mysterybox, langsung redirect ke GET /mysterybox
             return redirect()->route('mysterybox');
         }
-        $mode = session('mode', 'Budget');
+        $mode   = session('mode', 'Budget');
         $budget = session('budget');
-        $mood = session('mood');
+        $mood   = session('mood');
         return view('mystery_box.create', compact('mode', 'budget', 'mood'));
     })->name('mysterybox');
 
@@ -117,4 +151,15 @@ Route::middleware('auth', 'verified')->group(function () {
     Route::post('/customize-tower-bouquet/{type}/store', [CustomizeTowerBouquetController::class, 'store'])->name('customer-tower-bouquet.store');
 
     Route::resource('collections', CollectionController::class);
+
+    // baru dibuat ni bang -jason
+    Route::get('/checkout', function () {
+        return view('checkout');
+    })->name('checkout.index');
+
+    Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
+
+    Route::post('/orders/{order}/pay', [OrderController::class, 'pay'])->name('orders.pay');
+
+    Route::post('/checkout', [CheckoutController::class, 'store'])->name('checkout');
 });
