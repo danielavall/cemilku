@@ -23,6 +23,12 @@
     {{-- Style --}}
     <link rel="stylesheet" href="{{ asset('css/homepage.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <style>
+        body, html {
+            font-family: 'Poppins', sans-serif !important;
+        }
+    </style>
+
     @yield('style')
 
     <!-- Scripts -->
