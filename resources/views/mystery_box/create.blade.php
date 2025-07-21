@@ -9,7 +9,7 @@
 @endsection
 
 @section('content')
-    <div class="container-fluid min-vh-100 d-flex flex-column flex-md-row mt-5" data-mode="{{ $mode }}">
+    <div class="container-fluid min-vh-100 d-flex flex-column flex-md-row mt-5" id="mysteryboxContainer" data-mode="{{ $mode }}">
         {{-- LEFT SIDE --}}
         <div class="left-section col-12 col-md-6 p-4 d-flex flex-column">
             {{-- Header --}}
@@ -218,7 +218,6 @@
                     </div>
                 </div>
                 </div>
-                @endif
             </div>
         </div>
     </div>
