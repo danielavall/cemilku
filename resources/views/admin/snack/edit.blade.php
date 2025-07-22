@@ -12,7 +12,7 @@
     </div>
 
     <x-adminlte-card>
-        <form action="{{ route('admin.snack.update', $snack->id) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('adminsnack.update', $snack->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
 
@@ -24,7 +24,7 @@
             @if ($snack->image)
                 <div class="mb-3">
                     <label>Current Image:</label><br>
-                    <img src="{{ asset('storage/' . $snack->image) }}" alt="Snack Image" width="120" height="120" style="object-fit: cover; border-radius: 8px;">
+                    <img src="{{ asset('assets/snack_items/' . $snack->image) }}" alt="Snack Image" width="120" height="120" style="object-fit: cover; border-radius: 8px;">
                 </div>
             @endif
 
@@ -35,7 +35,7 @@
             </div>
 
             <x-adminlte-button type="submit" theme="success" icon="fas fa-save" label="Update" />
-            <a href="{{ route('admin.snack.index') }}" class="btn btn-secondary ml-2">Cancel</a>
+            <a href="{{ route('adminsnack.index') }}" class="btn btn-secondary ml-2">Cancel</a>
         </form>
     </x-adminlte-card>
 @endsection

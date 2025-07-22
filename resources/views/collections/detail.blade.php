@@ -9,8 +9,18 @@
 @endsection
 
 @section('content')
+
+    {{-- Alert --}}
+    <div id="topAlertContainer">
+        <span id="topAlertMessage"></span>
+</div>
+
+    <div id="alertBox" class="alert-text mt-2" role="alert" style="margin-top: 100px;">
+        <span id="alertMessage">Oops! Maximum stock limit reached.</span>
+    </div>
+
     {{-- BACK BUTTON --}}
-    <div class="back-button d-flex w-100 justify-content-between align-items-center">
+    <div class="back-button d-flex w-100 justify-content-between align-items-center" style="margin-top: 80px">
         <a href="/collections" id="backBtn">
             <img src="{{ asset('assets/mystery_box/arrow_back.png') }}" alt="Back" style="height: 24px;" />
         </a>
@@ -43,10 +53,15 @@
                     <input type="hidden" name="collection_id" value="{{ $detail->id }}">
                     <input type="hidden" name="price" value="{{ $detail->price }}">
                     <input type="hidden" id="stock" value="{{ $detail->stock }}">
+                    <input type="hidden" id="item-id" value="{{ $detail->id }}">
+                    <input type="hidden" id="item-name" value="{{ $detail->name }}">
+                    <input type="hidden" id="item-price" value="{{ $detail->price }}">
+                    <input type="hidden" id="item-image" value="{{ asset('assets/collections/' . $detail->image) }}">
+                    <input type="hidden" id="item-description" value="{{ $detail->description }}">
 
                     {{-- BUTTON QUANTITY --}}
                     <div class="counter-container">
-                        <h6 style="font-weight:600; margin-bottom:0px;">QUANTITY</h6>
+                        <div style="font-weight:600; margin-bottom:0px; font-size: 1.1rem;">QUANTITY</div>
                         <div class="counter-box">
                             <button type="button" id="minus">-</button>
                             <input type="number" id="value" class="counter-value" name="quantity" value="1"
@@ -55,22 +70,16 @@
                         </div>
                     </div>
 
-                    {{-- ALERT QUANTITY MELEBIHI STOK --}}
-                    <div id="alertBox" class="alert-text mt-2" role="alert">
-                        <span id="alertMessage">Oops! Maximum stock limit reached.</span>
-                    </div>
-
-
                     {{-- BUTTON ADD TO CART AND BUY NOW --}}
                     <div class="button-container d-flex">
-                        <button type="submit" class="btn btn-warning d-flex align-items-center justify-content-center"
-                            style="color: #52282A">
+                        <button type="button" class="btn btn-warning d-flex align-items-center justify-content-center"
+                            style="color: #52282A; border: 1px solid #000000;" id="add-to-cart-detail-btn">
                             <i class="bi bi-cart"></i>
-                            Add To Cart
+                            <div class="ms-2" style="font-size: 16px">Add To Cart</div>
                         </button>
                         <a href="#" class="btn btn-warning d-flex align-items-center justify-content-center"
-                            style="color: #52282A">
-                            Buy Now
+                            style="color: #52282A; border: 1px solid #000000;">
+                            <div style="font-size: 16px">Buy Now</div>
                         </a>
                     </div>
                 </form>

@@ -21,7 +21,14 @@
         rel="stylesheet">
 
     {{-- Style --}}
-    <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/homepage.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <style>
+        body, html {
+            font-family: 'Poppins', sans-serif !important;
+        }
+    </style>
+
     @yield('style')
 
     <!-- Scripts -->
@@ -34,7 +41,7 @@
 
 <body>
     <div id="app">
-        <nav class="navbar fixed-top navbar-expand-sm navbar-light" style="height: 70px">
+        <nav class="navbar fixed-top navbar-expand-sm navbar-light color_primary" style="height: 70px">
             <div class="container-fluid px-3 flex-wrap align-items-center justify-content-between">
 
                 {{-- Toggler Kiri --}}
@@ -45,12 +52,15 @@
                         <span class="navbar-toggler-icon"></span>
                     </button>
 
+
                     <!-- Logo (mobile) diluar burger -->
                     <div class="d-block mb-3 text-center ms-2">
                         <img src="{{ asset('assets/logo/logo.png') }}" alt="Logo" width="55" height="42"
                             style="display: block; position: relative; top:7px" />
                     </div>
+
                 </div>
+
 
                 {{-- Desktop Logo --}}
                 <a class="navbar-brand d-none d-sm-block m-4 p-2" href="#">
@@ -58,11 +68,13 @@
                         class="d-inline-block align-text-top" />
                 </a>
 
+
+
                 <!-- Menu NAVBAR Desktop -->
                 <div class="collapse navbar-collapse d-none d-sm-flex" id="collapsibleNavId">
                     <ul class="navbar-nav fs-5 flex-row gap-1">
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}"
+                            <a class="nav-link {{ request()->routeIs('homepage') ? 'active' : '' }}"
                                 href="{{ route('home') }}">Home</a>
                         </li>
                         {{-- <li class="nav-item">
@@ -70,19 +82,16 @@
                                 href="{{ route('custom') }}">Custom</a>
                         </li> --}}
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->routeIs('collections.index') ? 'active' : '' }}"
+                            <a class="nav-link {{ request()->routeIs('collections*') ? 'active' : '' }}"
                                 href="{{ route('collections.index') }}">Collections</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->routeIs() ? 'active' : '' }}"
-                                href="">Order</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {{ request()->routeIs('profile') ? 'active' : '' }}"
-                                href="{{route('profile', ['id' => Auth::user()->id, 'slug' => Str::slug(Auth::user()->name)])}}">Profile</a>
+                            <a class="nav-link {{ request()->routeIs('order') ? 'active' : '' }}"
+                                href="order">Order</a>
                         </li>
                     </ul>
                 </div>
+
 
                 {{-- Burger Content --}}
                 <div class="offcanvas offcanvas-start sidebar d-block d-sm-none" tabindex="-1" id="offcanvasNav"
@@ -102,32 +111,30 @@
                         <!-- Menu -->
                         <ul class="navbar-nav fs-5 flex-column gap-2">
                             <li class="nav-item">
-                                <a class="nav-link {{ request()->routeIs('homepage') ? 'active' : '' }}"
-                                    href="homepage">Home</a>
+                                <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}"
+                                    href="{{ route('home') }}">Home</a>
                             </li>
-                            <li class="nav-item">
+                            {{-- <li class="nav-item">
                                 <a class="nav-link {{ request()->routeIs('custom') ? 'active' : '' }}"
-                                    href="custom">Custom</a>
-                            </li>
+                                    href="{{ route('custom') }}">Custom</a>
+                            </li> --}}
                             <li class="nav-item">
                                 <a class="nav-link {{ request()->routeIs('collections*') ? 'active' : '' }}"
-                                    href="collections">Collections</a>
+                                    href="{{ route('collections.index') }}">Collections</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link {{ request()->routeIs('order') ? 'active' : '' }}"
                                     href="order">Order</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link {{ request()->routeIs('profile') ? 'active' : '' }}"
-                                    href="{{route('profile', ['id' => Auth::user()->id, 'slug' => Str::slug(Auth::user()->name)])}}">Profile</a>
-                            </li>
 
                             <!-- Language (Mobile) -->
                             <li class="nav-item dropdown d-block d-sm-none">
+
                                 <a class="nav-link dropdown-toggle" href="#" role="button"
                                     data-bs-toggle="dropdown">
                                     Language
                                 </a>
+
                                 <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" href="#"
                                             onclick="setLanguage('id')">Indonesia</a></li>
@@ -147,7 +154,7 @@
                     </div>
                 </div>
 
-                {{-- Language (Desktop) --}}
+                {{-- Language (Desktop)
                 <div class="dropdown d-none d-sm-block pe-2">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                         <img id="flag-icon" src="https://flagcdn.com/w20/id.png" alt="ID"
@@ -157,7 +164,7 @@
                         <li><a class="dropdown-item" href="#" onclick="setLanguage('id')">Indonesia</a></li>
                         <li><a class="dropdown-item" href="#" onclick="setLanguage('eng')">English</a></li>
                     </ul>
-                </div>
+                </div> --}}
 
                 {{-- Cart + Profile (Always on right) --}}
                 <div class="d-flex align-items-center gap-2 ms-auto pe-2">
@@ -177,26 +184,47 @@
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="#">
+                            <li>
+                                <a class="dropdown-item" href="#">
                                     <i class="bi bi-box-arrow-right me-2"></i>Log out
                                 </a>
                             </li>
                     </div>
 
-                    {{-- PROFILE BUAT MOBILE --}}
+                    <!-- DIPERBAIKI HREF & VISIBILITAS: Ikon Keranjang untuk Mobile -->
+                    <a class="nav-link d-block d-sm-none" href="{{ route('cart') }}">
+                        <i class="bi bi-cart3 fs-2" style="color: #52282A;"></i>
+                    </a>
+
+                    {{-- PROFILE BUAT MOBILE (posisinya tetap di dalam grup) --}}
                     <div class="d-block d-sm-none ms-3">
-                        <a class="nav-link" href="#">
-                            <i class="bi bi-person-circle fs-2" style="color: #341c02;"></i>
-                        </a>
+                        <!-- ... kode profil mobile ... -->
                     </div>
+
+
+
                 </div>
+
+
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="py-1">
             @yield('content')
         </main>
     </div>
+     <!-- Global JavaScript -->
+    <script src="{{ asset('javascript/languange_swithcer.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
+        xintegrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous">
+    </script>
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+
+    {{-- PENTING: cart.js tetap dimuat secara global karena window.addToCart perlu diakses dari halaman lain --}}
+    <script src="{{ asset('js/cart.js') }}"></script>
+    {{-- DIHAPUS DARI SINI: <script src="{{ asset('js/collection_detail.js') }}"></script> --}}
+
+    @yield('script') {{-- Ini adalah tempat JavaScript spesifik halaman akan diinjeksikan --}}
 </body>
 
 </html>

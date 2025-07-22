@@ -1,9 +1,7 @@
 <?php
-
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
-
+use App\Models\Address;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -22,7 +20,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function mainAddress()
     {
-        return $this->belongsTo(Address::class, 'address_id');
+        return $this->hasOne(Address::class)->where('is_primary', 1);
     }
 
     //relasi one to many dari user terhadap order

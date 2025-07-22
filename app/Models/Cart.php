@@ -12,7 +12,7 @@ class Cart extends Model
 
     protected $fillable = ['user_id', 'is_active'];
 
-    public function items()
+    public function cartItems()
     {
         return $this->hasMany(CartItem::class);
     }

@@ -1,0 +1,94 @@
+/* === WARNA TEKS GLOBAL (#52282A) === */
+.container,
+.shipping-box,
+.summary-box,
+.product-item,
+.product-item h6,
+.product-item p,
+.summary-box h5,
+.summary-box p {
+    color: #52282A;
+}
+
+/* Link default + hover */
+a,
+.btn-link {
+    color: #52282A;
+}
+
+a:hover,
+.btn-link:hover {
+    color: #5a3e31;
+}
+
+/* ========== SHIPPING BOX ========== */
+.shipping-box {
+    background: #FFF8E2;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, .1);
+    padding: 20px;
+}
+
+.shipping-box .btn-ubah {
+    color: #52282A;
+    font-weight: bold;
+    border: 1px solid #52282A;
+    padding: 8px 20px;
+    border-radius: 20px;
+    margin-left: auto;
+}
+
+.shipping-box .btn-ubah:hover {
+    background: #52282A;
+    color: #fff
+}
+
+/* ========== SUMMARY BOX ========== */
+.summary-box {
+    background: #FFF8E2;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, .1);
+    padding: 20px;
+}
+
+.summary-box hr {
+    border-top: 2px solid #52282A;
+    margin: 10px 0
+}
+
+.btn-primary {
+    background: #52282A;
+    border: #52282A;
+    border-radius: 50px;
+    padding: 10px 30px;
+    width: 100%;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* ========== SELECT-ALL BAR ========== */
+.select-all {
+    background: #FFF8E2;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, .1);
+}
+
+/* ========== PRODUCT ITEM ========== */
+.product-item {
+    background: #FFF8E2;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, .1);
+}
+
+.product-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 5px;
+    margin-right: 10px
+}
+
+/* Remove button: tampil/ sembunyi handled by JS via .d-none (Bootstrap) */
